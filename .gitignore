@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcworkspace
+*.xcuserstate
+*.xcuserdatad
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+
+# SwiftPM
+.packages/
+.build/
+
+# Playground
+timeline.xctimeline
+playground.xcworkspace
+
+# Logs
+*.log
+
+# SPM local artifact cache
+.artifacts/
