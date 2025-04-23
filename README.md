@@ -167,7 +167,7 @@ struct MySecureApp: App {
 ```
 
 This ensures all views are protected from launch without needing AppDelegate or UIWindow references.
-swift
+```swift
 @main
 struct MySecureApp: App {
     private let secureScreenKit = SecureScreenKit(window:
@@ -198,10 +198,11 @@ let isRecording = secureScreenKit.screenIsRecording()
 
 ---
 
-## 🧪 Simulator Notes
+### 🧪 Simulator Notes
 
-- Screenshots can **still be taken** on Simulator (even with protection enabled)
-- Please test on **physical devices** for accurate behavior
+- The **Trigger Screenshot** option from the **Simulator > Device** menu does simulate a real screenshot event.
+- You can test `UIApplication.userDidTakeScreenshotNotification` **in Simulator** using that option.
+- Screen recording detection (`UIScreen.isCaptured`) is only accurate on **physical devices**.
 
 ---
 
