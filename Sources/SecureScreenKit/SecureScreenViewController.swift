@@ -7,17 +7,37 @@
 
 import UIKit
 
+/// A base UIViewController subclass that enables automatic screen protection.
+/// Supports screenshot prevention and optional screen recording handling.
+///
+/// ### Example:
+/// ```swift
+/// final class SecureVC: ScreenProtectedViewController {
+///     override var screenProtectedDetectRecording: Bool { true }
+///     override var screenProtectedBlurStyle: UIBlurEffect.Style? { .dark }
+/// }
+/// ```
 open class ScreenProtectedViewController: UIViewController {
 
     private var screenManager: SecureScreenKit?
     private var isProtectionEnabled = false
 
+    /// Indicates if screen recording should be observed.
     open var screenProtectedDetectRecording: Bool { false }
+
+    /// Determines whether a blur overlay should be applied when recording.
     open var screenProtectedShowBlur: Bool { false }
+
+    /// Optional blur style to apply during screen recording.
     open var screenProtectedBlurStyle: UIBlurEffect.Style? { nil }
+
+    /// Optional color overlay to apply during screen recording.
     open var screenProtectedOverlayColor: UIColor? { nil }
+
+    /// Optional image overlay to apply during screen recording.
     open var screenProtectedOverlayImage: UIImage? { nil }
 
+    /// Activates protection when the view appears, and configures optional recording detection.
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -39,6 +59,7 @@ open class ScreenProtectedViewController: UIViewController {
         }
     }
 
+    /// Disables protection and removes overlays and observers when the view disappears.
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
@@ -51,6 +72,8 @@ open class ScreenProtectedViewController: UIViewController {
         isProtectionEnabled = false
     }
 
+    /// Applies or removes visual overlays depending on the current screen recording state.
+    /// - Parameter isCaptured: Whether the screen is currently being recorded.
     open func handleScreenProtectedRecordingState(_ isCaptured: Bool) {
         guard let screenManager else { return }
 

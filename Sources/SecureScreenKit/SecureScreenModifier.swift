@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A SwiftUI ViewModifier that enables screenshot prevention and optional screen recording detection.
 public struct SecureScreenModifier: ViewModifier {
 
     @State private var manager = SecureScreenKit(window: UIApplication.shared.connectedScenes
@@ -22,6 +23,13 @@ public struct SecureScreenModifier: ViewModifier {
     private let overlayImage: UIImage?
     private let onRecordingChange: ((Bool) -> Void)?
 
+    /// Creates a new SecureScreenModifier instance.
+    /// - Parameters:
+    ///   - detectRecording: Whether to observe screen recording.
+    ///   - blurStyle: Optional blur effect to show when recording.
+    ///   - overlayColor: Optional solid color overlay for recording.
+    ///   - overlayImage: Optional image overlay for recording.
+    ///   - onRecordingChange: Callback when recording state changes.
     public init(
         detectRecording: Bool = false,
         blurStyle: UIBlurEffect.Style? = nil,
@@ -36,6 +44,7 @@ public struct SecureScreenModifier: ViewModifier {
         self.onRecordingChange = onRecordingChange
     }
 
+    /// Applies the screen protection logic to the view content.
     public func body(content: Content) -> some View {
         ZStack {
             content
