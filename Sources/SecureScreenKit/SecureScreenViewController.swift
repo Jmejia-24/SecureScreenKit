@@ -12,12 +12,12 @@ import UIKit
 ///
 /// ### Example:
 /// ```swift
-/// final class SecureVC: ScreenProtectedViewController {
+/// final class SecureVC: SecureScreenViewController {
 ///     override var screenProtectedDetectRecording: Bool { true }
 ///     override var screenProtectedBlurStyle: UIBlurEffect.Style? { .dark }
 /// }
 /// ```
-open class ScreenProtectedViewController: UIViewController {
+open class SecureScreenViewController: UIViewController {
 
     private var screenManager: SecureScreenKit?
     private var isProtectionEnabled = false

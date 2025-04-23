@@ -18,7 +18,7 @@ SecureScreenKit is a lightweight Swift SDK to prevent screen captures and detect
 - 🎥 Detect screen recording (iOS 11+)
 - 💡 Optionally blur, overlay color, or image while recording
 - 🧩 SwiftUI support with `.screenProtected()` modifier
-- 🧱 UIKit support via `ScreenProtectedViewController`
+- 🧱 UIKit support via `SecureScreenViewController`
 - 🧰 Global configuration support from AppDelegate
 
 ---
@@ -65,7 +65,7 @@ You can also receive recording changes:
 ```swift
 import SecureScreenKit
 
-final class MyVC: ScreenProtectedViewController {
+final class MyVC: SecureScreenViewController {
     override var screenProtectedDetectRecording: Bool { true }
     override var screenProtectedBlurStyle: UIBlurEffect.Style? { .dark }
 

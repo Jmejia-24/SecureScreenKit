@@ -8,7 +8,7 @@
 import UIKit
 import SecureScreenKit
 
-class ViewController: ScreenProtectedViewController {
+class ViewController: SecureScreenViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
